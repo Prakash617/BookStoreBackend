@@ -15,10 +15,12 @@ router = DefaultRouter()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('dashboard/',include('dashboard.api_urls')),
+    path('order/',include('order.api_urls')),
     path('product/', include('product.api_urls')),
-    # path('website/',include('website.api_urls')),
-    # path('users/',include('user_accounts.api_urls')),
+    path('website/',include('website.api_urls')),
+    path('dashboard/',include('dashboard.api_urls')),
+    path('users/',include('user_accounts.api_urls')),
+    
     # path('payment/',include('payment.api_urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 

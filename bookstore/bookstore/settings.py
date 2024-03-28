@@ -28,6 +28,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+if DEBUG:
+    ip = "http://127.0.0.1:8000"
+    
+else:
+    ip = "http://54.255.217.254"
 
 # Application definition
 
@@ -78,6 +83,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "bookstore.wsgi.application"
 
+AUTH_USER_MODEL = "user_accounts.CustomUser"
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -87,7 +93,7 @@ if DEBUG:
     DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-                'NAME': 'bookstore',
+                'NAME': 'bookstores',
                 'USER': 'postgres',
                 'PASSWORD': '1234',
                 'HOST': 'localhost',
@@ -202,3 +208,16 @@ SIMPLE_JWT = {
 
 CORS_ORIGINS_ALLOW_ALL = True
 CORS_ALLOW_ALL_ORIGINS = True
+
+# for email
+if DEBUG:
+    EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'bloggingworkshop046@gmail.com'
+EMAIL_HOST_PASSWORD = 'hngn nrxh asps pitt'
